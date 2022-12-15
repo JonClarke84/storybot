@@ -1,17 +1,20 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 import styles from './page.module.css'
+import Prompt from './components/prompt'
 
-export default function Home() {
+export default function Home(): JSX.Element {
+  
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to StoryBot!
+          This is a test title!
         </h1>
 
-        <textarea className={styles.textarea} placeholder="Enter your story prompt here" />
-
-        <button className={styles.button}>Generate Story</button>
+        <Prompt />
 
       </main>
 
