@@ -8,16 +8,8 @@ import Story from "../types/types"
 export default function StorySection(): JSX.Element {
   const [text, setText] = useState('text')
   const [prompt, setPrompt] = useState('prompt default')
+  const [image, setImage] = useState('/landscape.jpeg')
   const router = useRouter()
-
-  const getImageFromAPI = (prompt: string): string => {
-    // const response = await fetch(`/api/story?prompt=${prompt}`)
-    const response = { url: '/landscape.jpeg' }
-    // const data = await response.json()
-    // const url: string = data.url
-    const url: string = response.url
-    return url
-  }
 
   async function getStoryFromApi (prompt: string, refresh: any): Promise<void> {
     setPrompt(prompt)
@@ -36,11 +28,10 @@ export default function StorySection(): JSX.Element {
     const prompt: any = new URLSearchParams(window.location.search).get('prompt')
     getStoryFromApi(prompt, router.refresh).then((data) => {
       console.log('data: ', data)
-      setText(data)
+      setText(data.story)
+      setImage(data.imageUrl)
     })
   }, [])
-
-  const image = getImageFromAPI(prompt)
 
   return (
     <div>
@@ -51,8 +42,8 @@ export default function StorySection(): JSX.Element {
         width={500}
         height={500}
       />
-      <p>{prompt}</p>
-      <p>{text}</p>
+      <p>Your prompt: {prompt}</p>
+      <p>Your story: {text}</p>
     </div>
   )
 }

@@ -5,4 +5,16 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = {
+  ...nextConfig,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
+        port: '',
+        pathname: '/private/org-FhqMGJlJmrKB9sqGAHvVsRHb/user-2fFtynu05Gvi9KePGshtPwKj/**'
+      }
+    ]
+  }
+}
