@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          This is a test title!
+          Welcome to StoryBot
         </h1>
 
         <Prompt />
