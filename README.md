@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-You'll need to set up an OpenAI Api key and store in a .env file in the root of the project. You can get a key from [here](https://beta.openai.com/).
+You'll need to set up an OpenAI Api key and store in a .env.local file in the root of the project. You can get a key from [here](https://beta.openai.com/).
 
 ```bash
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
