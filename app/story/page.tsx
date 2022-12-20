@@ -1,49 +1,24 @@
-'use client'
-
 import Image from "next/image"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
-import Story from "../types/types"
+import { Story, Prompt } from "../types/types"
+import getStory from '../lib/getStory'
 
-export default function StorySection(): JSX.Element {
-  const [text, setText] = useState('text')
-  const [prompt, setPrompt] = useState('prompt default')
-  const [image, setImage] = useState('/landscape.jpeg')
-  const router = useRouter()
 
-  async function getStoryFromApi (prompt: string, refresh: any): Promise<void> {
-    setPrompt(prompt)
-    const response = await fetch('/api/story', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(prompt)
-    })
-    console.log('setting text: ', text)
-    return await response.json()
-  }
-  
-  useEffect(() => {
-    const prompt: any = new URLSearchParams(window.location.search).get('prompt')
-    getStoryFromApi(prompt, router.refresh).then((data) => {
-      console.log('data: ', data)
-      setText(data.story)
-      setImage(data.imageUrl)
-    })
-  }, [])
+export default async function StorySection({ searchParams }: { searchParams: Prompt }): Promise<JSX.Element> {
+  const prompt: Prompt = searchParams || ''
+  const data: Story = await getStory(prompt.prompt)
 
   return (
     <div>
       <h1>Story</h1>
       <Image
-        src={image}
+        src={data.imageUrl}
+        // src={'/landscape.jpeg'}
         alt="Story Image"
         width={500}
         height={500}
       />
-      <p>Your prompt: {prompt}</p>
-      <p>Your story: {text}</p>
+      <p>Your prompt: {prompt.prompt}</p>
+      <p>Your story: {data.story}</p>
     </div>
   )
 }

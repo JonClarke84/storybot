@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { Story } from "../../app/types/types"
 
-export default async function data(req: NextApiRequest, res: NextApiResponse) {
+export default async function getStory(prompt: string): Promise<Story> {
+  console.log('Calling api with prompt: ', prompt)
   const { Configuration, OpenAIApi } = require('openai')
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY
@@ -14,11 +15,9 @@ export default async function data(req: NextApiRequest, res: NextApiResponse) {
     imageUrl: ''
   }
 
-  console.log('Request body BE: ', req.body)
-
     const story: Promise<NextApiResponse> = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: req.body,
+      prompt: prompt,
       max_tokens: 2000,
       temperature: 0.6,
       n: 1
@@ -42,6 +41,6 @@ export default async function data(req: NextApiRequest, res: NextApiResponse) {
       })
     })
 
-  console.log('Response object: ', responseObj)
-  res.json(responseObj)
+  console.log('Responding with: ', responseObj)
+  return responseObj
 }

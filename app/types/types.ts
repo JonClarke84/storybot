@@ -1,5 +1,9 @@
-type Story = {
-  text: string
+export type Story = {
+  story: string,
+  imagePrompt: string,
+  imageUrl: string
 }
 
-export default Story
+export type Prompt = {
+  prompt: string
+}
