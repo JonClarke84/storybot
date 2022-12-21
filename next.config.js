@@ -13,8 +13,8 @@ module.exports = {
         protocol: 'https',
         hostname: 'oaidalleapiprodscus.blob.core.windows.net',
         port: '',
-        pathname: '/private/org-FhqMGJlJmrKB9sqGAHvVsRHb/user-2fFtynu05Gvi9KePGshtPwKj/**'
-      }
-    ]
-  }
+        pathname: '/private/org-*/user-*/**',
+      },
+    ],
+  },
 }

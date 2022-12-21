@@ -1,9 +1,12 @@
-import Image from "next/image"
-import { Story, Prompt } from "../types/types"
+import Image from 'next/image'
+import { Story, Prompt } from '../types/types'
 import getStory from '../lib/getStory'
 
-
-export default async function StorySection({ searchParams }: { searchParams: Prompt }): Promise<JSX.Element> {
+export default async function StorySection({
+  searchParams,
+}: {
+  searchParams: Prompt
+}): Promise<JSX.Element> {
   const prompt: Prompt = searchParams || ''
   const data: Story = await getStory(prompt.prompt)
 
