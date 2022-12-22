@@ -45,7 +45,7 @@ export default async function getStory(prompt: string): Promise<Story> {
     await openai.createImage({
       prompt: `${imagePromptData.choices[0].text}. Children's book illustration, digital art.`,
       n: 1,
-      size: '1024x1024',
+      size: '512x512',
     })
   responseObj.imageUrl = imageUrlData.data[0].url
 

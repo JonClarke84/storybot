@@ -190,3 +190,14 @@
   justify-content: center;
   margin: 1rem;
 }
+
+.select {
+  overflow: hidden!important;
+  text-overflow: ellipsis!important;
+  max-width: 80%;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
