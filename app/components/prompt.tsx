@@ -5,12 +5,12 @@ import styles from '../page.module.css'
 import { Character } from '../types/types'
 
 export default function Prompt({ characterList }: { characterList: Character[] }): JSX.Element {
-  const [chosenCharacter, setChosenCharacter] = useState('')
+  const [characterObj, setcharacterObj] = useState<string>('')
   return (
     <>
       <form action='/story' className={styles.form}>
         <label htmlFor='character'>Choose a character:</label>
-        <select name='character' className={styles.select} onChange={(e) => setChosenCharacter(e.target.value)}>
+        <select name='character' className={styles.select} onChange={(e) => setcharacterObj(e.target.value)}>
           <option key={'null'} value={''}>
             -
           </option>
@@ -23,7 +23,7 @@ export default function Prompt({ characterList }: { characterList: Character[] }
         <textarea
           name='story'
           className={styles.textarea}
-          placeholder={`Write a story for ${chosenCharacter.split(',')[0]}...` || 'Write a story...'}
+          placeholder={`Write a story for ${characterObj.split(',')[0]}...`}
         />
 
         <button className={styles.button} type='submit'>Generate Story</button>

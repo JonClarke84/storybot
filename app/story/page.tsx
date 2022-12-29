@@ -9,8 +9,7 @@ export default async function StorySection({
 }): Promise<JSX.Element> {
   const promptDetails: PromptDetails = searchParams || ''
   const { character, story } = promptDetails
-  const characterName = character.split(',')[0]
-  const characterDescription = character.split(',')[1]
+  const [ characterName, characterDescription ] = character.split(',')
 
   const data: Story = await getStory(`Tell me a children's story about ${characterName}, ${characterDescription}. ${story}`)
 

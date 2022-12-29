@@ -4,7 +4,7 @@ import {
   OACompletionResponse,
 } from '../types/types'
 
-export default async function getStory(prompt: string): Promise<Character> {
+export default async function getCharacter(prompt: string): Promise<Character> {
   console.log('Reqesting characters with prompt: ', prompt)
   const { Configuration, OpenAIApi } = require('openai')
   const configuration = new Configuration({
@@ -21,7 +21,7 @@ export default async function getStory(prompt: string): Promise<Character> {
     n: 1,
   })
 
-  const response = characterData.choices[0].text
-  const responseJson = JSON.parse(response)
+  const response: string = characterData.choices[0].text
+  const responseJson: Character = JSON.parse(response)
   return responseJson
 }
