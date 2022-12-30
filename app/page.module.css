@@ -1,5 +1,7 @@
 .container {
   padding: 0 2rem;
+  width: clamp(300px, 90vw, 600px);
+  margin: auto;
 }
 
 .main {
@@ -163,6 +165,7 @@
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
+  margin: 0.5rem;
   font-size: 1.2rem;
   border-radius: 5px;
   cursor: pointer;
@@ -189,4 +192,27 @@
   align-items: center;
   justify-content: center;
   margin: 1rem;
+}
+
+.select {
+  overflow: hidden!important;
+  text-overflow: ellipsis!important;
+  max-width: 75vw;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.input {
+  width: clamp(300px, 75vw, 600px);
+  border: 1px solid #eaeaea;
+  resize: none;
+  outline: none;
+  padding: 1rem;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
 }

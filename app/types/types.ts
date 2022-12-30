@@ -8,6 +8,18 @@ export type Prompt = {
   prompt: string
 }
 
+export type PromptDetails = {
+  character: string,
+  description: string,
+  story: string,
+}
+
+export type Character = {
+    [key: string]: any
+    name: string
+    description: string
+}
+
 export type OAImageResponse = {
   created: number
   data: Array<{
