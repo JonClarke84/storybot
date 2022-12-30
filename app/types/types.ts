@@ -10,12 +10,14 @@ export type Prompt = {
 
 export type PromptDetails = {
   character: string,
-  story: string
+  description: string,
+  story: string,
 }
 
 export type Character = {
-  name: string
-  description: string
+    [key: string]: any
+    name: string
+    description: string
 }
 
 export type OAImageResponse = {

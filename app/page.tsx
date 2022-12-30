@@ -6,7 +6,7 @@ import getCharacter from './lib/getCharacter'
 
 export default async function Home(): Promise<JSX.Element> {
   const characters: Character = await getCharacter('Give me a json document of 5 original and uniquely named characters that have never been used before and are suitable for a childrens story with name and description fields')
-  const characterList: Character[] = Object.keys(characters).map((key) => characters[key])
+  const characterList: Character[] = Object.keys(characters).map((key: string) => characters[key])
 
   return (
     <div className={styles.container}>
