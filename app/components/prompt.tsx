@@ -26,7 +26,7 @@ export default function Prompt({ characterList }: { characterList: Character[] }
       { (!showChooseCharacter && !showCreateCharacter) &&
       <>
         <button className={styles.button} onClick={handleChooseCharacter}>Choose A Character</button>
-        <button className={styles.button} onClick={handleCreateCharacter}>Create A Character</button>
+        {/* <button className={styles.button} onClick={handleCreateCharacter}>Create A Character</button> */}
       </>
       }
       <form action='/story' className='form'>
