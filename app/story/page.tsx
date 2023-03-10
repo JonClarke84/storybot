@@ -7,12 +7,9 @@ export default async function StorySection({
 }: {
   searchParams: PromptDetails
 }): Promise<JSX.Element> {
-  const promptDetails: PromptDetails = searchParams || ''
-  const { character, story, description } = promptDetails
-  const [ characterName, characterDescription ] = character.split(',')
-
-  const data: Story = await getStory(
-    `Tell me a children's story about ${characterName}, ${description? description : characterDescription}. ${story}`)
+  const prompt: PromptDetails = searchParams || ''
+  const data: Story = await getStory(prompt)
+  const { story: generatedStory } = data
 
   return (
     <div>
@@ -23,7 +20,9 @@ export default async function StorySection({
         width={500}
         height={500}
       />
-      <p>Your story: {data.story}</p>
+      <p>{generatedStory.split('\n').map((item, key) => {
+        return <span key={key}>{item}<br/></span>
+      })}</p>
     </div>
   )
 }
