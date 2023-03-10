@@ -5,7 +5,7 @@ import {
   OAImageResponse,
 } from '../../app/types/types'
 
-export default async function getStory(prompt: any): Promise<Story> {
+export default async function getStory(prompt: any = null): Promise<Story> {
   const { character, story } = prompt
   const { name, description } = JSON.parse(character)
   console.log('prompt: ', prompt)
