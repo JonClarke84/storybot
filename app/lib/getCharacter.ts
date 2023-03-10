@@ -12,7 +12,7 @@ export default async function getCharacter(prompt: string): Promise<Character> {
   })
   const openai = new OpenAIApi(configuration)
 
-  const { data: characterData }: Promise<NextApiResponse<OACompletionResponse>> =
+  const { data: characterData } =
   await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: prompt,
