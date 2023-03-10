@@ -4,7 +4,7 @@ import getStory from '../lib/getStory'
 
 export default async function StorySection({ searchParams } : { searchParams: any }): Promise<JSX.Element> {
   const prompt: PromptDetails = searchParams || ''
-  const data: Story = await getStory(prompt)
+  const data: Story = prompt && await getStory(prompt)
   const { story: generatedStory } = data
 
   return (
