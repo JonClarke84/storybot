@@ -2,13 +2,15 @@ import Image from 'next/image'
 import { Story, PromptDetails } from '../types/types'
 import getStory from '../lib/getStory'
 
-export default async function StorySection({
-  searchParams,
-}: {
-  searchParams: PromptDetails
-}): Promise<JSX.Element> {
-  const prompt: PromptDetails = searchParams || ''
-  const data: Story = await getStory(prompt)
+export default async function StorySection({ searchParams }: any): Promise<JSX.Element> {
+  const prompt: PromptDetails = searchParams || false
+  let data = {
+    story: '',
+    imageUrl: ''
+  }
+  if (prompt) {
+    data = await getStory(prompt)
+  }
   const { story: generatedStory } = data
 
   return (
