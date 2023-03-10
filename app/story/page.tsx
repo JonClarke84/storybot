@@ -3,7 +3,7 @@ import { Story, PromptDetails } from '../types/types'
 import getStory from '../lib/getStory'
 
 export default async function StorySection({ searchParams }: any): Promise<JSX.Element> {
-  const prompt: PromptDetails = searchParams || ''
+  const prompt: PromptDetails = searchParams || false
   let data = {
     story: '',
     imageUrl: ''
