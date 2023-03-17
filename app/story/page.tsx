@@ -1,18 +1,21 @@
+export const dynamic = 'force-dynamic'
 import Image from 'next/image'
 import { Story, PromptDetails } from '../types/types'
 import getStory from '../lib/getStory'
 
-export const dynamic = 'force-dynamic'
-
-export default async function StorySection({ searchParams }: any): Promise<JSX.Element> {
-  if(searchParams.character === undefined) return (
+export default async function StorySection({
+  searchParams
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}): Promise<JSX.Element> {
+  if(!searchParams) return (
     <div>
       <h1>Story</h1>
       <p>There was an error generating your story. Please try again.</p>
     </div>
   )
 
-  const prompt: PromptDetails = searchParams
+  const prompt = searchParams
   let data = {
     story: '',
     imageUrl: ''

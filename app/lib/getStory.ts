@@ -1,4 +1,4 @@
-import { NextApiResponse } from 'next'
+export const dynamic = 'force-dynamic'
 import {
   Story,
   OACompletionResponse,
