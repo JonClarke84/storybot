@@ -9,9 +9,9 @@ export default function ChooseCharacter({ characterList }: { characterList: Char
         <option key={'null'} value={''}>
           Choose a character
         </option>
-        {characterList.map((character: Character, index) => (
+        {characterList.map((character: Character) => (
           <>
-          <option key={index} value={JSON.stringify(character)}>
+          <option key={character.name} value={JSON.stringify(character)}>
             {character.name} - {character.description}
           </option>
           </>
