@@ -2,16 +2,33 @@ import Image from 'next/image'
 import { Story, PromptDetails } from '../types/types'
 import getStory from '../lib/getStory'
 
+export const dynamic = 'force-dynamic'
+
 export default async function StorySection({ searchParams }: any): Promise<JSX.Element> {
-  const prompt: PromptDetails = searchParams || false
+  if(searchParams.character === undefined) return (
+    <div>
+      <h1>Story</h1>
+      <p>There was an error generating your story. Please try again.</p>
+    </div>
+  )
+
+  const prompt: PromptDetails = searchParams
   let data = {
     story: '',
     imageUrl: ''
   }
   if (prompt) {
     data = await getStory(prompt)
-  }
+  } else throw new Error('No prompt provided')
+  
   const { story: generatedStory } = data
+
+  if(!generatedStory) return (
+    <div>
+      <h1>Story</h1>
+      <p>There was an error generating your story. Please try again.</p>
+    </div>
+  )
 
   return (
     <div>
